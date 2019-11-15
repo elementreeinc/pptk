@@ -189,7 +189,7 @@ class Viewer : public QWindow, protected OpenGLFuncs {
     _dolly->stop();
     if (ev->buttons() & Qt::LeftButton) {
       _pressPos = ev->windowPos();
-      if (ev->modifiers() & Qt::ControlModifier) {
+      if (!(ev->modifiers() & Qt::ControlModifier)) {
         if (ev->modifiers() & Qt::ShiftModifier)
           _selection_box->click(win2ndc(_pressPos), SelectionBox::SUB);
         else
@@ -197,8 +197,7 @@ class Viewer : public QWindow, protected OpenGLFuncs {
         renderPoints();
       }
     } else if (ev->buttons() & Qt::RightButton) {
-      _points->clearSelected();
-      renderPoints();
+      _pressPos = ev->windowPos();
     } else {
       QWindow::mousePressEvent(ev);
     }
@@ -212,13 +211,15 @@ class Viewer : public QWindow, protected OpenGLFuncs {
         _selection_box->drag(win2ndc(ev->windowPos()));
       } else {
         _camera.restore();
-        if (ev->modifiers() == Qt::ShiftModifier)
-          _camera.pan(QVector2D(ev->windowPos() - _pressPos) *
-                      QVector2D(2.0f / width(), 2.0f / height()));
-        else if (ev->modifiers() == Qt::NoModifier)
+        if (ev->modifiers() == Qt::ControlModifier)
           _camera.rotate(QVector2D(ev->windowPos() - _pressPos));
       }
       renderPoints();
+    } else if (ev->buttons() & Qt::RightButton) {
+        _camera.restore();
+        _camera.pan(QVector2D(ev->windowPos() - _pressPos) *
+            QVector2D(2.0f / width(), 2.0f / height()));
+        renderPoints();
     } else {
       QWindow::mouseMoveEvent(ev);
     }
