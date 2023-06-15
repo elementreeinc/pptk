@@ -1,6 +1,5 @@
 PYTHON_INCLUDE_DIR:PATH=/home/marionet/.pyenv/versions/3.7.3/include/python3.7m
 PYTHON_LIBRARY:FILEPATH=/home/marionet/.pyenv/versions/3.7.3
-Numpy_INCLUDE_DIR:PATH=/home/marionet/.pyenv/versions/3.7.3/lib/python3.7/site-packages/numpy/core/include/numpy
 Eigen_INCLUDE_DIR:PATH=/home/marionet/src/outside/eigen-3.3.4
 Qt5_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5
 TBB_INCLUDE_DIR:PATH=/usr/lib/x86_64-linux-gnu/

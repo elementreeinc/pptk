@@ -11,7 +11,7 @@
 add_library(vfuncs SHARED vfuncs.cpp)
 set_target_python_module_name(vfuncs)
 if(WIN32)
-    target_link_libraries(vfuncs ${PYTHON_LIBRARY})
+    target_link_libraries(vfuncs Eigen3::Eigen ${PYTHON_LIBRARY})
 elseif(APPLE)
   set_target_properties(vfuncs PROPERTIES
     LINK_FLAGS "-undefined dynamic_lookup")
@@ -21,8 +21,8 @@ elseif(UNIX)
 endif()
 target_include_directories(vfuncs PRIVATE
   ../include  # for python_util.h
+  Eigen3::Eigen
   ${PYTHON_INCLUDE_DIR}
-  ${Eigen_INCLUDE_DIR}
   ${Numpy_INCLUDE_DIR})
 copy_target(vfuncs)
 copy_target_dependencies(vfuncs)

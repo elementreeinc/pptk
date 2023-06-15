@@ -28,8 +28,8 @@ add_executable(viewer
   point_attributes.h)
 
 set_target_properties(viewer PROPERTIES AUTOMOC TRUE)
-target_link_libraries(viewer Qt5::Widgets Qt5::Network Qt5::OpenGL ${OPENGL_gl_LIBRARY})
-target_include_directories(viewer PRIVATE ${Eigen_INCLUDE_DIR} )
+target_link_libraries(viewer Qt5::Widgets Qt5::Network Qt5::OpenGL ${OPENGL_gl_LIBRARY} Eigen3::Eigen)
+target_include_directories(viewer PRIVATE)
 copy_target(viewer)
 copy_target_dependencies(viewer)
 copy_file(viewer.py)

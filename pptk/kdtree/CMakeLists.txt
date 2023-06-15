@@ -20,16 +20,12 @@ elseif(UNIX)
   set_target_properties(kdtree PROPERTIES
     LINK_FLAGS "-static-libstdc++")
 endif()
-target_compile_definitions(kdtree PRIVATE -DUSE_TBB)
+target_compile_definitions(kdtree PRIVATE)
 target_include_directories(kdtree PRIVATE
   ../include  # for python_util.h
   src         # for k-d tree source code
-  ${TBB_INCLUDE_DIR}
   ${PYTHON_INCLUDE_DIR}
   ${Numpy_INCLUDE_DIR} )
-target_link_libraries(kdtree
-  ${TBB_tbb_LIBRARY}
-  ${TBB_tbbmalloc_LIBRARY})
 copy_target(kdtree)
 copy_target_dependencies(kdtree)
 copy_file(__init__.py)

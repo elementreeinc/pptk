@@ -11,7 +11,6 @@
 # include(FindOpenMP)
 
 add_library(estimate_normals SHARED estimate_normals.cpp)
-set(_link_flags ${OpenMP_CXX_FLAGS})
 if(WIN32)
   target_link_libraries(estimate_normals ${PYTHON_LIBRARY})
 elseif(APPLE)
@@ -20,19 +19,18 @@ elseif(UNIX)
   set(_link_flags "${_link_flags} -static-libstdc++")
 endif()
 set_target_properties(estimate_normals PROPERTIES
-  COMPILE_FLAGS ${OpenMP_CXX_FLAGS}
   LINK_FLAGS ${_link_flags})
 set_target_python_module_name(estimate_normals)
 target_compile_definitions(estimate_normals PRIVATE -DUSE_TBB)
 target_link_libraries(estimate_normals
-  ${TBB_tbb_LIBRARY}
-  ${TBB_tbbmalloc_LIBRARY})
+  ${TBB_tbb_LIBRARY_RELEASE}
+  ${TBB_tbbmalloc_LIBRARY_RELEASE}
+  Eigen3::Eigen
+)
 target_include_directories(estimate_normals PRIVATE
   ../../include     # for python_util.h
   ../../kdtree/src  # for kdtree.h
-  ${Eigen_INCLUDE_DIR}
   ${PYTHON_INCLUDE_DIR}
-  ${TBB_INCLUDE_DIR}
   ${Numpy_INCLUDE_DIR})
 copy_target(estimate_normals)
 copy_target_dependencies(estimate_normals)
