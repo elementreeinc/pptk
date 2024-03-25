@@ -1,12 +1,12 @@
-PYTHON_INCLUDE_DIR:PATH=/home/marionet/.pyenv/versions/3.7.3/include/python3.7m
-PYTHON_LIBRARY:FILEPATH=/home/marionet/.pyenv/versions/3.7.3
-Numpy_INCLUDE_DIR:PATH=/home/marionet/.pyenv/versions/3.7.3/lib/python3.7/site-packages/numpy/core/include/numpy
-Eigen_INCLUDE_DIR:PATH=/home/marionet/src/outside/eigen-3.3.4
+PYTHON_INCLUDE_DIR:PATH=${HOME}/.pyenv/versions/3.10.11/include/python3.10
+PYTHON_LIBRARY:FILEPATH=${HOME}/src/clockwork/venv
+Numpy_INCLUDE_DIR:PATH=${HOME}/src/clockwork/venv/lib/python3.10/site-packages/numpy/core/include/numpy/
+Eigen_INCLUDE_DIR:PATH=${HOME}/src/outside/eigen-3.3.4
 Qt5_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5
 TBB_INCLUDE_DIR:PATH=/usr/lib/x86_64-linux-gnu/
 TBB_tbb_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libtbb.so
 TBB_tbb_RUNTIME:FILEPATH=/usr/lib/x86_64-linux-gnu/libtbb.so
 TBB_tbbmalloc_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libtbbmalloc.so
 TBB_tbbmalloc_RUNTIME:FILEPATH=/usr/lib/x86_64-linux-gnu/libtbbmalloc.so
-PPTK_PATCHELF:FILEPATH=/home/marionet/.local/bin/patchelf
+PPTK_PATCHELF:FILEPATH=${HOME}/.local/bin/patchelf
 
